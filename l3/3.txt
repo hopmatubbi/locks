@@ -1,0 +1,364 @@
+/*
+#include <iostream>           
+# define str_len 30
+# define str_len1 30 
+# define str_len2 30
+# define str_len3 30
+# define str_len4 30
+# define str_len5 30
+# define size 30  
+using namespace std;
+void enter_new();
+void check();
+struct Library
+{
+	char author[str_len];
+	char name[str_len1];
+	char publishing_house[str_len2];
+	char section[str_len3];
+	char origin[str_len4];
+	char  availability[str_len5];
+};
+struct Library list_of_book[size];
+struct Library bad;
+int current_size = 0; int choice;
+int main()
+{
+	setlocale(LC_CTYPE, "Russian");
+	cout << "Введите:" << endl;
+	cout << "1-для добавления записи" << endl;
+	cout << "2-для просмотра книг" << endl;
+	cout << "3-для выхода" << endl;
+	cin >> choice;
+	do
+	{
+		switch (choice)
+		{
+		case 1:  enter_new();	break;
+		case 2:  check();  break;
+		default:break;
+		}
+	} while (choice != 3);
+}
+void enter_new()
+{
+	setlocale(LC_CTYPE, "Rus");
+	cout << "Ввод информации" << endl;
+	if (current_size < size)
+	{
+		cout << "Строка номер ";
+		cout << current_size + 1;
+		cout << endl << "Автор книги: " << endl;
+		cin >> list_of_book[current_size].author;
+		cout << endl << "Название книги: " << endl;
+		cin >> list_of_book[current_size].name;
+		cout << endl << "Издательство: " << endl;
+		cin >> list_of_book[current_size].publishing_house;
+		cout << endl << "Раздел библиотеки(специальная литература, хобби, домашнее хозяйство, беллетристика и т. д.): " << endl;
+		cin >> list_of_book[current_size].section;
+		cout << endl << "Происхождение(покупка, кража, подарок) : " << endl;
+		cin >> list_of_book[current_size].origin;
+		cout << endl << "Наличие: " << endl;
+		cin >> list_of_book[current_size].availability;
+		current_size++;
+	}
+	else
+		cout << "Введено максимальное кол-во строк";
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}
+void check()
+{
+	setlocale(LC_CTYPE, "Rus");
+	int sw, n,k=0,m=0,z=0;
+	char *str = new char;
+	char *str1 = new char;
+	cout << "Введите автора: ";
+	cin >> str;
+	k = strlen(str);
+	for (int i = 0; i < current_size; i++)
+	{
+		str1 = list_of_book[i].author;
+		for(int i = 0; i < k;i++)
+		{
+			if (*(str+i)==*(str1+i))
+			{
+				m++;
+			}
+		}
+		if (k == m)
+		{
+			cout << endl << "Автор книги: " << endl;
+			cout << list_of_book[i].author << endl;
+			cout << endl << "Название книги: " << endl;
+			cout << list_of_book[i].name << endl;
+			cout << endl << "Издательство: " << endl;
+			cout << list_of_book[i].publishing_house << endl;
+			cout << endl << "Раздел библиотеки: " << endl;
+			cout << list_of_book[i].section << endl;
+			cout << endl << "Происхождение: " << endl;
+			cout << list_of_book[i].origin << endl;
+			cout << endl << "Наличие: " << endl << endl;
+			cout << list_of_book[i].availability << endl;
+			z++;
+			m = 0;
+		}
+	}
+	if (z==0)
+	{
+		cout << endl << "Такого варианта нет!";
+	}
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}*/
+     
+
+
+//....................................dop1
+/*
+#include <iostream>     
+#include <stdlib.h>
+# define str_len 30
+# define str_len1 30
+# define str_len2 30
+# define size 30  
+using namespace std;
+void enter_new();
+void check_ratio();
+void gg();
+struct Structure
+{
+	char fio[str_len];
+	char number_exm[str_len1];
+	char rating[str_len2];
+};
+struct Structure list_of_student[size];
+struct Structure bad;
+int current_size = 0; int choice;
+int main()
+{
+	setlocale(LC_CTYPE, "Russian");
+	cout << "Введите:" << endl;
+	cout << "1-для добавления записи" << endl;
+	cout << "2-для просмотра отношения" << endl;
+	cout << "3-для просмотра студентов, которые сдали на 4-5" << endl;
+	cout << "4-для выхода" << endl;
+	cin >> choice;
+	do
+	{
+		switch (choice)
+		{
+		case 1:  enter_new();	break;
+		case 2:  check_ratio(); break;
+		case 3:  gg(); break;
+		default:break;
+		}
+	} while (choice != 4);
+}
+void enter_new()
+{
+	setlocale(LC_CTYPE, "Rus");
+	cout << "Ввод информации" << endl;
+	if (current_size < size)
+	{
+		cout << "Строка номер ";
+		cout << current_size + 1;
+		cout << endl << "ФИО ученика: " << endl;
+		cin >> list_of_student[current_size].fio;
+		cout << endl << "Количество экзаменов: " << endl;
+		scanf("%d", list_of_student[current_size].number_exm);
+		cout << endl << "Оценки: " << endl;
+		cin >> list_of_student[current_size].rating;
+		current_size++;
+	}
+	else
+		cout << "Введено максимальное кол-во строк";
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}
+void check_ratio()
+{
+	setlocale(LC_CTYPE, "Rus");
+	for (int i = 0; i < current_size; i++)
+	{
+		char *str = new char;
+		str = list_of_student[i].number_exm;
+		char cifra = str[0];
+		int Kolvo = static_cast<int>(cifra);
+		int ocenki = 0;
+		int student45 = 0;
+		int student = 0;
+		int percent = 0;
+		char *str1 = new char;
+		str1 = list_of_student[i].rating;
+		for (int i = 0; i < 2 * Kolvo - 1; i++)
+		{
+			char a = *(str1 + i);
+			if (str1[i] == ' ')
+				i++;
+			else{
+				int n = static_cast<int>(a);
+				if (n >= 4)
+				{
+					ocenki++;
+				}
+			}
+		}
+		if (ocenki == Kolvo)
+		{
+			cout << "ФИО: " << list_of_student[i].fio << endl;
+			cout << "Количество экзаменов: " << list_of_student[i].number_exm << endl;
+			cout << "Оценки: " << list_of_student[i].rating << endl;
+		}
+	}
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}
+void gg(){
+	int ocenki = 0;
+	int student45 = 0;
+	int student = 0;
+	int percent = 0;
+	for (int i = 0; i < current_size; i++)
+	{
+		char *str = new char;
+		str = list_of_student[i].number_exm;
+		char cifra = str[0];
+		int Kolvo = static_cast<int>(cifra);
+		char *str1 = new char;
+		str1 = list_of_student[i].rating;
+		for (int i = 0; i < 2 * Kolvo - 1; i++)
+		{
+			char a = *(str1 + i);
+			if (str1[i]==' ')
+				i++;
+			else{
+				int n = static_cast<int>(a);
+				if (n >= 4)
+				{
+					ocenki++;
+				}
+			}
+		}
+		if (ocenki == Kolvo)
+		{
+			student45++;
+		}
+		student++;
+	}
+	percent = student45 * 100 / student;
+	cout << "Процент студентов, которые сдали экзамены на 4 и 5 равен: " << percent << "%"<< endl;
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}
+*/
+
+//.................................................dop2
+
+/*
+#include <iostream>     
+#include <stdlib.h>
+# define str_len 30
+# define str_len1 30
+# define size 8
+using namespace std;
+void enter_new();
+void check_train();
+void check_time();
+struct Train
+{
+	char destination[str_len];
+	int number_of_train;
+	char departure_time[str_len1];
+};
+struct Train list_of_train[size];
+struct Train bad;
+int current_size = 0; int choice;
+int main()
+{
+	setlocale(LC_CTYPE, "Russian");
+	cout << "Введите:" << endl;
+	cout << "1-для добавления записи" << endl;
+	cout << "2-для просмотра отношения" << endl;
+	cout << "3-для просмотра поездов приходящих в это время" << endl;
+	cout << "4-для выхода" << endl;
+	cin >> choice;
+	do
+	{
+		switch (choice)
+		{
+		case 1:  enter_new();	break;
+		case 2:  check_train(); break;
+		case 3:  check_time(); break;
+		default:break;
+		}
+	} while (choice != 4);
+}
+void enter_new()
+{
+	setlocale(LC_CTYPE, "Rus");
+	cout << "Ввод информации" << endl;
+	if (current_size < size)
+	{
+		cout << "Строка номер ";
+		cout << current_size + 1;
+		cout << endl << "Пункт назначения: " << endl;
+		cin >> list_of_train[current_size].destination;
+		cout << endl << "Номер поезда: " << endl;
+		cin >> list_of_train[current_size].number_of_train;
+		cout << endl << "Время отправления: " << endl;
+		cin >> list_of_train[current_size].departure_time;
+		current_size++;
+	}
+	else
+		cout << "Введено максимальное кол-во строк";
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}
+void check_train()
+{
+	setlocale(LC_CTYPE, "Rus");
+	for (int i = 0; i < current_size; i++)
+	{
+		cout << endl << "Пункт назначения: " << endl;
+		cout << list_of_train[i].destination;
+		cout << endl << "Номер поезда: " << endl;
+		cout << list_of_train[i].number_of_train;
+		cout << endl << "Время отправления: " << endl;
+		cout << list_of_train[i].departure_time << endl << endl << endl;
+	}
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}
+void check_time()
+{
+	char *str = new char;
+	char *str1 = new char;
+	int m = 0;
+	cout << "Введите нужное время отправки: ";
+	cin >> str;
+	int length = strlen(str);
+	for (int i = 0; i < current_size; i++)
+	{
+		str1 = list_of_train[i].departure_time;
+		for (int k = 0; k < length; k++)
+		{
+			if (str[k] == str1[k])
+			{
+				m++;
+			}
+		}
+		if (length==m)
+		{
+			cout << endl << "Пункт назначения: " << endl;
+			cout << list_of_train[i].destination;
+			cout << endl << "Номер поезда: " << endl;
+			cout << list_of_train[i].number_of_train;
+			cout << endl << "Время отправления: " << endl;
+			cout << list_of_train[i].departure_time << endl << endl << endl;
+			m = 0;
+		}
+	}
+	cout << "Что дальше?" << endl;
+	cin >> choice;
+}*/
